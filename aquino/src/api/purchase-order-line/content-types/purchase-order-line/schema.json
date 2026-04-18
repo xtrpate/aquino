@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "purchase_order_lines",
+  "info": {
+    "singularName": "purchase-order-line",
+    "pluralName": "purchase-order-lines",
+    "displayName": "Purchase_Order_Line"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "OrderLineID": {
+      "type": "uid",
+      "required": true
+    },
+    "QuantityOrdered": {
+      "type": "integer",
+      "required": true
+    },
+    "UnitPriceOrder": {
+      "type": "integer",
+      "required": true
+    },
+    "LineTotal": {
+      "type": "integer",
+      "required": true
+    },
+    "ReceivedStatus": {
+      "type": "string",
+      "required": true
+    },
+    "purchase_order": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::purchase-order.purchase-order",
+      "inversedBy": "purchase_order_lines"
+    },
+    "medicine": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::medicine.medicine",
+      "inversedBy": "purchase_order_lines"
+    },
+    "SubOrderLine": {
+      "type": "component",
+      "component": "sub-oderline.sub-order-line",
+      "repeatable": true
+    }
+  }
+}

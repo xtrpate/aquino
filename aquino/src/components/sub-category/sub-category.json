@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_sub_category_sub_categories",
+  "info": {
+    "displayName": "SubCategory"
+  },
+  "options": {},
+  "attributes": {
+    "SubMedicineDesc": {
+      "type": "string"
+    },
+    "MedicineType": {
+      "type": "enumeration",
+      "enum": [
+        "Antibiotics",
+        "Pain Relievers",
+        "Paracetamol"
+      ]
+    }
+  },
+  "config": {}
+}

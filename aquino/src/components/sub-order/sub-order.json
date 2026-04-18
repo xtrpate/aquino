@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_sub_order_sub_orders",
+  "info": {
+    "displayName": "SubOrder"
+  },
+  "options": {},
+  "attributes": {
+    "OrdersNum": {
+      "type": "integer"
+    },
+    "OrderType": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

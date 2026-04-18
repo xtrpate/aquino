@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medicine Inventory System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon">⚕</div>
+        <div>
+          <div class="brand-name">PharmaSys</div>
+          <div class="brand-sub">Medicine Inventory System</div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-label">Catalog</div>
+        <button
+          class="nav-btn active"
+          data-section="medicines"
+          onclick="showSection('medicines')"
+        >
+          <span class="nav-icon">💊</span> Medicines
+        </button>
+        <button
+          class="nav-btn"
+          data-section="categories"
+          onclick="showSection('categories')"
+        >
+          <span class="nav-icon">🏷</span> Categories
+        </button>
+
+        <div class="nav-label">Supply Chain</div>
+        <button
+          class="nav-btn"
+          data-section="suppliers"
+          onclick="showSection('suppliers')"
+        >
+          <span class="nav-icon">🏭</span> Suppliers
+        </button>
+        <button
+          class="nav-btn"
+          data-section="purchase-orders"
+          onclick="showSection('purchase-orders')"
+        >
+          <span class="nav-icon">📋</span> Purchase Orders
+        </button>
+        <button
+          class="nav-btn"
+          data-section="order-lines"
+          onclick="showSection('order-lines')"
+        >
+          <span class="nav-icon">📑</span> Order Lines
+        </button>
+
+        <div class="nav-label">Inventory</div>
+        <button
+          class="nav-btn"
+          data-section="stock"
+          onclick="showSection('stock')"
+        >
+          <span class="nav-icon">📦</span> Stock Inventory
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="connection-status" id="connectionStatus">
+          <span class="status-dot" id="statusDot"></span>
+          <span id="statusText">Connecting…</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+      <!-- Top Bar -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <h1 class="page-title" id="pageTitle">Medicines</h1>
+          <div class="breadcrumb" id="breadcrumb">Catalog › Medicines</div>
+        </div>
+        <div class="topbar-right">
+          <div class="search-wrap">
+            <span class="search-icon">⌕</span>
+            <input
+              type="text"
+              class="search-input"
+              id="searchInput"
+              placeholder="Search…"
+              oninput="handleSearch(this.value)"
+            />
+          </div>
+          <button class="btn-primary" id="addBtn" onclick="openAddModal()">
+            + Add New
+          </button>
+        </div>
+      </header>
+
+      <!-- Stats Bar -->
+      <div class="stats-bar" id="statsBar"></div>
+
+      <!-- Toast -->
+      <div class="toast" id="toast"></div>
+
+      <!-- Table Container -->
+      <div class="table-wrap">
+        <div class="table-inner" id="tableContainer">
+          <div class="loading-state">
+            <div class="spinner"></div>
+            <p>Loading data…</p>
+          </div>
+        </div>
+        <div class="pagination" id="pagination"></div>
+      </div>
+    </main>
+
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+      <div class="modal" id="modal">
+        <div class="modal-header">
+          <h2 class="modal-title" id="modalTitle">Add Medicine</h2>
+          <button class="modal-close" onclick="closeModalDirect()">✕</button>
+        </div>
+        <div class="modal-body" id="modalBody"></div>
+        <div class="modal-footer">
+          <button class="btn-ghost" onclick="closeModalDirect()">Cancel</button>
+          <button class="btn-primary" id="modalSaveBtn" onclick="saveRecord()">
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delete Confirm Modal -->
+    <div
+      class="modal-overlay"
+      id="deleteOverlay"
+      onclick="closeDeleteModal(event)"
+    >
+      <div class="modal modal-sm" id="deleteModal">
+        <div class="modal-header">
+          <h2 class="modal-title">Confirm Delete</h2>
+          <button class="modal-close" onclick="closeDeleteDirect()">✕</button>
+        </div>
+        <div class="modal-body">
+          <p class="delete-msg">
+            Are you sure you want to delete this record? This action cannot be
+            undone.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-ghost" onclick="closeDeleteDirect()">
+            Cancel
+          </button>
+          <button class="btn-danger" id="confirmDeleteBtn">Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

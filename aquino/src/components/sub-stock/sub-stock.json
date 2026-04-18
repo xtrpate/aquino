@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_sub_stock_sub_stocks",
+  "info": {
+    "displayName": "SubStock"
+  },
+  "options": {},
+  "attributes": {
+    "StockNum": {
+      "type": "integer"
+    }
+  },
+  "config": {}
+}

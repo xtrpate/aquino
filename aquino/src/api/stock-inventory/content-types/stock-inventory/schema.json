@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "stock_inventories",
+  "info": {
+    "singularName": "stock-inventory",
+    "pluralName": "stock-inventories",
+    "displayName": "Stock_Inventory"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "InventoryID": {
+      "type": "uid",
+      "required": true
+    },
+    "BatchNumber": {
+      "type": "integer",
+      "required": true
+    },
+    "QuantityOnHand": {
+      "type": "integer",
+      "required": true
+    },
+    "ExpiryDate": {
+      "type": "datetime",
+      "required": true
+    },
+    "StorageLocation": {
+      "type": "string",
+      "required": true
+    },
+    "LastRestockDate": {
+      "type": "datetime",
+      "required": true
+    },
+    "medicine": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::medicine.medicine",
+      "inversedBy": "stock_inventories"
+    }
+  }
+}

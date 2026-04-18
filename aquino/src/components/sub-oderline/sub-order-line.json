@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_sub_oderline_sub_order_lines",
+  "info": {
+    "displayName": "SubOrderLine"
+  },
+  "options": {},
+  "attributes": {
+    "SubOrderLineDesc": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
